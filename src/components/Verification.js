@@ -5,14 +5,14 @@ export default function verification() {
     const param=useParams();
     try {
         const verify = async () => {
-            await fetch(`http://localhost:4000/api/getUserDetails/${param.token}`, {
+            await fetch(`https://movieslibrarybackend-2tnj.onrender.com/api/getUserDetails/${param.token}`, {
                 method: 'GET',
                 headers: {'Content-Type': 'application/json'},
             }).then(async (res) => {
                 let response= await res.json()
                 //console.log("res in verify" ,response.data.email)
                 if(response.success){
-                    await fetch("http://localhost:4000/api/verifyUser", {
+                    await fetch("https://movieslibrarybackend-2tnj.onrender.com/api/verifyUser", {
                     method: 'PUT',
                     headers:{'Content-Type':'application/json'},
                     body:JSON.stringify({email:response.data.email})
