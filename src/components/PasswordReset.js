@@ -9,14 +9,14 @@ export default function PasswordReset() {
         if(credentials.password!=credentials.confirmPassword){alert("confirmPassword is not matching");return;}
         setLoading(1)
         try {
-            await fetch(`http://localhost:4000/api/getUserDetails/${param.token}`, {
+            await fetch(`https://movieslibrarybackend-2tnj.onrender.com/api/getUserDetails/${param.token}`, {
             method: 'GET',
             headers: {'Content-Type': 'application/json'},
             }).then(async (res) => {
             let response= await res.json()
             //console.log("res in rest" ,response.data.email)
             if(response.success){
-                await fetch("http://localhost:4000/api/updatePassword", {
+                await fetch("https://movieslibrarybackend-2tnj.onrender.com/api/updatePassword", {
                 method: 'PUT',
                 headers:{'Content-Type':'application/json'},
                 body:JSON.stringify({email:response.data.email,password:credentials.password})
