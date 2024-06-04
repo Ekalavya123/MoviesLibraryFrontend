@@ -14,13 +14,13 @@ function FolderMovies() {
   const [search,setSearch]=useState("");
   const [add,setAdd]=useState(0);
   const getMovies = async () => {
-    const response = await fetch(`http://localhost:4000/api/getUserDetails/${localStorage.getItem('token')}`, {
+    const response = await fetch(`https://movieslibrarybackend-2tnj.onrender.com/api/getUserDetails/${localStorage.getItem('token')}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     });
     const userData = await response.json();
     if (userData.success) {
-      const moviesResponse = await fetch(`http://localhost:4000/api/getNotesByFolder/${userData.data.email}/${param.folderName}`, {
+      const moviesResponse = await fetch(`https://movieslibrarybackend-2tnj.onrender.com/api/getNotesByFolder/${userData.data.email}/${param.folderName}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       });
@@ -33,13 +33,13 @@ function FolderMovies() {
   };
 
   const handleDelete = async (id) => {
-    const response = await fetch(`http://localhost:4000/api/getUserDetails/${localStorage.getItem('token')}`, {
+    const response = await fetch(`https://movieslibrarybackend-2tnj.onrender.com/api/getUserDetails/${localStorage.getItem('token')}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     });
     const userData = await response.json();
     if (userData.success) {
-      const deleteResponse = await fetch(`http://localhost:4000/api/deleteNote/${id}`, {
+      const deleteResponse = await fetch(`https://movieslibrarybackend-2tnj.onrender.com/api/deleteNote/${id}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
       });
@@ -52,13 +52,13 @@ function FolderMovies() {
   const submitNote = async (event) => {
     setLoading(1)
     event.preventDefault();
-    const response = await fetch(`http://localhost:4000/api/getUserDetails/${localStorage.getItem('token')}`, {
+    const response = await fetch(`https://movieslibrarybackend-2tnj.onrender.com/api/getUserDetails/${localStorage.getItem('token')}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     });
     const userData = await response.json();
     if (userData.success) {
-      const addResponse = await fetch("http://localhost:4000/api/createNote", {
+      const addResponse = await fetch("https://movieslibrarybackend-2tnj.onrender.com/api/createNote", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
@@ -106,13 +106,13 @@ function FolderMovies() {
   const submitEdit = async (event) => {
     setLoading(1)
     event.preventDefault();
-    const response = await fetch(`http://localhost:4000/api/getUserDetails/${localStorage.getItem('token')}`, {
+    const response = await fetch(`https://movieslibrarybackend-2tnj.onrender.com/api/getUserDetails/${localStorage.getItem('token')}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     });
     const userData = await response.json();
     if (userData.success) {
-      const editResponse = await fetch(`http://localhost:4000/api/updateNote/${editId}`, {
+      const editResponse = await fetch(`https://movieslibrarybackend-2tnj.onrender.com/api/updateNote/${editId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
