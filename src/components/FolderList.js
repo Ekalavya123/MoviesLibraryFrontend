@@ -10,13 +10,13 @@ function FolderList() {
   const [isEditing, setIsEditing] = useState(false);
   const [editId, setEditId] = useState(null);
   const getFolders = async () => {
-    const response = await fetch(`http://localhost:4000/api/getUserDetails/${localStorage.getItem('token')}`, {
+    const response = await fetch(`https://movieslibrarybackend-2tnj.onrender.com/api/getUserDetails/${localStorage.getItem('token')}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     });
     const userData = await response.json();
     if (userData.success) {
-      const foldersResponse = await fetch(`http://localhost:4000/api/getFolders/${userData.data.email}`, {
+      const foldersResponse = await fetch(`https://movieslibrarybackend-2tnj.onrender.com/api/getFolders/${userData.data.email}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       });
@@ -29,13 +29,13 @@ function FolderList() {
   }
 
   const handleDelete = async (id) => {
-    const response = await fetch(`http://localhost:4000/api/getUserDetails/${localStorage.getItem('token')}`, {
+    const response = await fetch(`https://movieslibrarybackend-2tnj.onrender.com/api/getUserDetails/${localStorage.getItem('token')}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     });
     const userData = await response.json();
     if (userData.success) {
-      const deleteResponse = await fetch(`http://localhost:4000/api/deleteFolder/${userData.data.email}/${folderName}`, {
+      const deleteResponse = await fetch(`https://movieslibrarybackend-2tnj.onrender.com/api/deleteFolder/${userData.data.email}/${folderName}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
       });
@@ -50,13 +50,13 @@ function FolderList() {
 
   const CreateFolder = async (event) => {
     event.preventDefault();
-    const response = await fetch(`http://localhost:4000/api/getUserDetails/${localStorage.getItem('token')}`, {
+    const response = await fetch(`https://movieslibrarybackend-2tnj.onrender.com/api/getUserDetails/${localStorage.getItem('token')}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     });
     const userData = await response.json();
     if (userData.success) {
-      const addResponse = await fetch("http://localhost:4000/api/createFolder", {
+      const addResponse = await fetch("https://movieslibrarybackend-2tnj.onrender.com/api/createFolder", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: userData.data.email, folder:folderName })
@@ -79,13 +79,13 @@ function FolderList() {
 
   const submitEdit = async (event) => {
     event.preventDefault();
-    const response = await fetch(`http://localhost:4000/api/getUserDetails/${localStorage.getItem('token')}`, {
+    const response = await fetch(`https://movieslibrarybackend-2tnj.onrender.com/api/getUserDetails/${localStorage.getItem('token')}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     });
     const userData = await response.json();
     if (userData.success) {
-      const editResponse = await fetch(`http://localhost:4000/api/updateFolder/${editId}`, {
+      const editResponse = await fetch(`https://movieslibrarybackend-2tnj.onrender.com/api/updateFolder/${editId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email:userData.data.email,folder:folderName })
