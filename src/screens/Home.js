@@ -22,9 +22,7 @@ export default function Home() {
       console.log("moviesdata",moviesData)
       if (moviesData.success) setMovies(moviesData.data);
       else alert(moviesData.message);
-    } else {
-      alert(userData.message);
-    }
+    } 
   };
   useEffect(()=>{
     getMovies();
