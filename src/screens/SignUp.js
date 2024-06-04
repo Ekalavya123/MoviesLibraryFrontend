@@ -12,7 +12,7 @@ export default function Signup() {
         alert("conform Password is not matching");return;
       }
       setLoading(1)
-      fetch("http://localhost:4000/api/createUser", {
+      fetch("https://movieslibrarybackend-2tnj.onrender.com/api/createUser", {
           method: 'POST',
           headers:{
               'Content-Type':'application/json'
