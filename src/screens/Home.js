@@ -32,9 +32,11 @@ export default function Home() {
   console.log("movies",movies)
   return (
     <div>
-      <Header/>
+      
       {localStorage.getItem('token')?
-      <><div className="d-flex m-3 justify-content-center ">
+      <>
+       <Header/>
+    <div className="d-flex m-3 justify-content-center ">
       <button className="btn btn-outline-success text-white bg-success" style={{'margin-right': '10px'}} >Search</button>
       <input className="form-control " type="search" placeholder="Search"  aria-label="Search" value={search} onChange={(e)=>{setSearch(e.target.value)}} />
        </div>
