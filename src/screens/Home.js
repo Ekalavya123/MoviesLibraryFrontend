@@ -8,13 +8,13 @@ export default function Home() {
   const [search,setSearch]=useState("");
   const [movies,setMovies]=useState([]);
   const getMovies = async () => {
-    const response = await fetch(`http://localhost:4000/api/getUserDetails/${localStorage.getItem('token')}`, {
+    const response = await fetch(`https://movieslibrarybackend-2tnj.onrender.com/api/getUserDetails/${localStorage.getItem('token')}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     });
     const userData = await response.json();
     if (userData.success) {
-      const moviesResponse = await fetch(`http://localhost:4000/api/getAllNotes`, {
+      const moviesResponse = await fetch(`https://movieslibrarybackend-2tnj.onrender.com/api/getAllNotes`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       });
@@ -32,13 +32,12 @@ export default function Home() {
   console.log("movies",movies)
   return (
     <div>
+      <Header/>
       {localStorage.getItem('token')?
-      <>
-    <Header/>
-    <div className="d-flex m-3 justify-content-center ">
+      <><div className="d-flex m-3 justify-content-center ">
       <button className="btn btn-outline-success text-white bg-success" style={{'margin-right': '10px'}} >Search</button>
       <input className="form-control " type="search" placeholder="Search"  aria-label="Search" value={search} onChange={(e)=>{setSearch(e.target.value)}} />
-  </div>
+       </div>
       <div className="container">
       <div className="row">
         {movies.filter((item)=> (String(item.name).toLowerCase().includes(String(search).toLowerCase())) && !item.private).map((noteItem, index) => (
