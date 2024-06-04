@@ -16,7 +16,7 @@ export default function Login() {
     try {
       setLoading(1)
       if(forgot){
-        fetch(`http://localhost:4000/api/forgotPassword/${credentials.email}`, {
+        fetch(`https://movieslibrarybackend-2tnj.onrender.com/api/forgotPassword/${credentials.email}`, {
             method: 'GET',
             headers:{'Content-Type':'application/json'}
         }).then(response => response.json()).then(json => {
@@ -25,7 +25,7 @@ export default function Login() {
         })
       }
       else{
-        fetch(`http://localhost:4000/api/loginuser/${credentials.email}/${credentials.password}`, {
+        fetch(`https://movieslibrarybackend-2tnj.onrender.com/api/loginuser/${credentials.email}/${credentials.password}`, {
             method: 'GET',
             headers:{'Content-Type':'application/json'}
         }).then(response => response.json()).then(json => {
