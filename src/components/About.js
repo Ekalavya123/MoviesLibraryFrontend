@@ -7,7 +7,7 @@ export default  function About() {
     let authToken=localStorage.getItem("token")
     try {
         const fetchUser = async () => {
-            await fetch(`http://localhost:4000/api/getUserDetails/${authToken}`, {
+            await fetch(`https://movieslibrarybackend-2tnj.onrender.com/api/getUserDetails/${authToken}`, {
                 method: 'GET',
                 headers: {'Content-Type': 'application/json'}
             }).then(async (res) => {
